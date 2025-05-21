@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Апа 80 жас!</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', serif;
+      background: url('https://images.unsplash.com/photo-1549887534-4601eacb9b91?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(6px);
+      color: #333;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .restaurant-photo {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .countdown {
+      font-size: 2em;
+      color: #d35400;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    iframe.map {
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 800px;
+      height: 300px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #d35400;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 30px;
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 40px 15px; }
+      h2 { font-size: 1.5em; }
+      .countdown { font-size: 1.5em; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confetti"></canvas>
+
+  <!-- Hero -->
+  <section data-aos="fade-up">
+    <h2>Біздің сүйікті апамыз — 80 жаста!</h2>
+    <p>Осы ерекше күнге сізді шақыру біз үшін үлкен қуаныш.</p>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/3t6bLugtJkQ?autoplay=1&mute=1&loop=1&playlist=3t6bLugtJkQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Мереке туралы -->
+  <section data-aos="fade-up">
+    <h2>Мереке туралы</h2>
+    <p>
+      📅 13 шілде 2025 жыл<br>
+      📍 Талдықорған қаласы, Астана даңғылы 21<br>
+      🏢 GRAND HALL DARIA — Кіші зал
+    </p>
+    <img src="C:\Users\zhani\Downloads\WhatsApp Image 2025-05-11 at 11.06.42.jpeg" alt="Зал фото" class="restaurant-photo">
+  </section>
+
+  <!-- Мекенжай картасы -->
+  <section data-aos="fade-up">
+    <h2>Мекенжай картасы</h2>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2855.755424045232!2d78.38853361575163!3d45.00321197909861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x429c1558c7edeb8d%3A0xb5fdb95dfed5466b!2z0JHQu9C10LrRgdCw0LvRjNC90YvQuSDQkdCw0LzQuNC90LA!5e0!3m2!1sru!2skz!4v1716136400000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <!-- RSVP form -->
+  <section data-aos="fade-up">
+    <h2>Қатысатыныңызды растаңыз</h2>
+    <p>Сізден қатысатыныңызды алдын ала хабарлауыңызды сұраймыз</p>
+    <a class="button" href="mailto:example@mail.ru?subject=RSVP">Қатысамын</a>
+  </section>
+
+  <!-- Countdown -->
+  <section data-aos="fade-up">
+    <h2>Мерекеге дейін қалған уақыт</h2>
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Countdown
+    const eventDate = new Date("2025-07-13T17:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        countdownEl.innerHTML = "Мереке басталды!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `${days} күн ${hours} сағат ${minutes} мин ${seconds} сек`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Confetti
+    const confettiSettings = { target: 'confetti', max: 80, size: 1.2, animate: true, props: ['circle', 'square', 'triangle'], colors: [[255,0,0],[0,255,0],[0,0,255],[255,255,0]] };
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+  </script>
+
+</body>
+</html>
