@@ -12,11 +12,9 @@
       margin: 0;
       font-family: 'Open Sans', sans-serif;
       color: #333;
-      position: relative;
-      min-height: 100vh;
-      overflow-x: hidden;
       background: url('https://github.com/nikkidarkl/Nikki/blob/main/flower-9173953.png?raw=true') no-repeat center center fixed;
       background-size: cover;
+      overflow-x: hidden;
     }
 
     .overlay {
@@ -25,10 +23,10 @@
       border-radius: 10px;
       max-width: 800px;
       margin: 20px auto;
-      animation: fadeIn 1.5s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       position: relative;
       z-index: 1;
+      animation: fadeIn 1.5s ease;
     }
 
     h1, h2 {
@@ -76,39 +74,12 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
 
-    form {
+    .form-container {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    label {
-      font-weight: 600;
-    }
-
-    select, input, textarea {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #aaa;
-      font-size: 1em;
-    }
-
-    button {
-      padding: 10px;
-      background-color: #a94442;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 1.1em;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #7e3232;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .audio-button {
@@ -124,6 +95,16 @@
       cursor: pointer;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .apa-photo {
+      display: block;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     @keyframes fadeIn {
@@ -192,7 +173,6 @@
       font-weight: 600;
     }
 
-    /* Мобильная адаптация */
     @media (max-width: 600px) {
       h1, h2 {
         font-size: 2em;
@@ -206,6 +186,10 @@
       .countdown-box {
         padding: 10px 15px;
       }
+      .apa-photo {
+        width: 130px;
+        height: 130px;
+      }
     }
   </style>
 </head>
@@ -213,7 +197,8 @@
   <button class="audio-button" onclick="toggleAudio()">🎵</button>
 
   <div class="overlay fade">
-    <h1 class="hidden">Біздің сүйікті апамыз — <span class="animated-number">80</span> жаста!</h1>
+    <img src="https://github.com/nikkidarkl/Nikki/blob/main/apa.jpeg?raw=true" alt="Апа" class="apa-photo" />
+    <h1 class="hidden">Біздің сүйікті Орнай апамыз — <span class="animated-number">80</span> жаста!</h1>
     <p>Осы ерекше күнге сізді шақыру біз үшін үлкен қуаныш.</p>
     <iframe
       src="https://www.youtube.com/embed/prluWiwd9vc?autoplay=1&mute=1&loop=1&playlist=prluWiwd9vc"
@@ -223,9 +208,11 @@
     </iframe>
   </div>
 
+  <!-- Остальные блоки остаются без изменений -->
+
   <div class="overlay fade">
     <h2 class="hidden">Мереке туралы</h2>
-    <p>🎉 Мереке күні: <strong>13 шілде 2025 жылы</strong></p>
+    <p>🎉 Мереке күні: <strong>13 шілде 2025 жылы сағат 12:00</strong></p>
     <p>📍 Орналасқан жері: Талдықорған қаласы, Астана даңғылы 21</p>
     <p>🏢 Зал: GRAND HALL DARIA кешенінің кіші залы</p>
     <p>👨‍👩‍👧 Той иесі: балалары мен немере-шөберелері</p>
@@ -236,10 +223,8 @@
   <div class="overlay fade">
     <h2 class="hidden">Мекенжай картасы</h2>
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2912.6989077680954!2d78.3759643765703!3d45.005365571070695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x429c1c611f72fce3%3A0x3d16f148ad4bd41a!2sAstana%20Street%2021%2C%20Taldykorgan%2C%20Kazakhstan!5e0!3m2!1sen!2skz!4v1716642740000!5m2!1sen!2skz" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
+      src="https://yandex.ru/map-widget/v1/?ll=78.3748%2C45.0157&z=16&mode=search&text=%D0%A2%D0%B0%D0%BB%D0%B4%D1%8B%D0%BA%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%2C%20%D0%BC%D0%B8%D0%BA%D1%80%D0%BE%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%20%D0%91%D0%BE%D0%BB%D0%B0%D1%88%D0%B0%D2%9B%2C%2021%2F1%2C%20Daria"
+      width="100%" height="360" frameborder="0" allowfullscreen>
     </iframe>
   </div>
 
@@ -267,22 +252,9 @@
 
   <div class="overlay fade">
     <h2 class="hidden">Қатысатыныңызды растаңыз</h2>
-    <form>
-      <label for="name">Атыңыз:</label>
-      <input type="text" id="name" required />
-
-      <label for="presence">Қатысасыз ба?</label>
-      <select id="presence">
-        <option>Иә</option>
-        <option>Жоқ</option>
-        <option>Әлі білмеймін</option>
-      </select>
-
-      <label for="note">Қосымша ескерту:</label>
-      <textarea id="note" rows="3"></textarea>
-
-      <button type="submit">Жіберу</button>
-    </form>
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehgMIVh0Av2Xe8oHZwbSQsOqtXFKLHNPTW8u3Hk2cFkuf4lg/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Форма жүктелмеді…</iframe>
+    </div>
   </div>
 
   <audio id="bgmusic" autoplay loop>
@@ -292,52 +264,37 @@
   <script>
     function toggleAudio() {
       const audio = document.getElementById("bgmusic");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+      audio.paused ? audio.play() : audio.pause();
     }
 
-    const eventDate = new Date("2025-07-13T18:00:00").getTime();
+    const eventDate = new Date("2025-07-13T12:00:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
       const diff = eventDate - now;
-
       if (diff <= 0) {
         document.querySelector('.countdown-container').innerHTML = "<strong>Мереке басталды!</strong>";
         return;
       }
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-
       document.getElementById("days").innerText = String(days).padStart(2, '0');
       document.getElementById("hours").innerText = String(hours).padStart(2, '0');
       document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
       document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
     }
 
-    updateCountdown();
     setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const options = { threshold: 0.1 };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fadeInUp');
-            entry.target.classList.remove('hidden');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-
-      document.querySelectorAll('h1.hidden, h2.hidden').forEach(el => {
-        observer.observe(el);
+    window.addEventListener('load', () => {
+      document.querySelectorAll('h1, h2').forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.remove('hidden');
+          el.classList.add('fadeInUp');
+        }, 300 * i);
       });
     });
   </script>
