@@ -98,19 +98,18 @@
     }
 
     .apa-photo {
-      display: block;
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transform: scale(1.6);
-      transition: transform 0.3s ease;
-    }
-    .apa-photo:hover {
-      transform: scale(1.7);
-    }
+  display: block;
+  width: 400px;          /* Больший размер для десктопа */
+  height: 400px;
+  max-width: 95vw;
+  max-height: 95vw;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 10px;   /* Меньше отступ снизу */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 10;
+}
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
@@ -192,12 +191,11 @@
         padding: 10px 15px;
       }
       .apa-photo {
-        width: 170px;
-        height: 170px;
-        transform: scale(1.6);
-      }
-      .apa-photo:hover {
-        transform: scale(1.7);
+        width: 240px;
+        height: 240px;
+        max-width: 90vw;
+        max-height: 90vw;
+        margin-bottom: 20px;
       }
     }
   </style>
@@ -292,21 +290,22 @@
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-      document.getElementById("days").innerText = String(days).padStart(2, '0');
-      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+      document.getElementById("days").textContent = days.toString().padStart(2, '0');
+      document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    window.addEventListener('load', () => {
-      document.querySelectorAll('h1, h2').forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.remove('hidden');
-          el.classList.add('fadeInUp');
-        }, i * 400);
+    // Анимация появления заголовков
+    document.addEventListener('DOMContentLoaded', () => {
+      const headers = document.querySelectorAll('h1, h2');
+      headers.forEach(h => {
+        h.classList.remove('hidden');
+        h.classList.add('fadeInUp');
       });
     });
   </script>
