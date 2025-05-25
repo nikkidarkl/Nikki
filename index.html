@@ -105,6 +105,11 @@
       border-radius: 50%;
       margin: 0 auto 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transform: scale(1.6);
+      transition: transform 0.3s ease;
+    }
+    .apa-photo:hover {
+      transform: scale(1.7);
     }
 
     @keyframes fadeIn {
@@ -189,6 +194,10 @@
       .apa-photo {
         width: 170px;
         height: 170px;
+        transform: scale(1.6);
+      }
+      .apa-photo:hover {
+        transform: scale(1.7);
       }
     }
   </style>
@@ -297,7 +306,7 @@
         setTimeout(() => {
           el.classList.remove('hidden');
           el.classList.add('fadeInUp');
-        }, 300 * i);
+        }, i * 400);
       });
     });
   </script>
